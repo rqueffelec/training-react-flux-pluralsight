@@ -11,6 +11,9 @@
 # production
 /build
 
+#tools db
+/tools/db.json
+
 # misc
 .DS_Store
 .env.local
