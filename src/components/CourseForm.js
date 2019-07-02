@@ -21,7 +21,11 @@ function CourseForm(props) {
         label="Author"
         onChange={props.onChange}
         value={props.course.authorId ? props.course.authorId.toString() : ""}
-        items={props.authors}
+        options={props.authors.map(author => (
+          <option key={author.id} value={author.id}>
+            {author.name}
+          </option>
+        ))}
         error={props.errors.authorId}
       />
 

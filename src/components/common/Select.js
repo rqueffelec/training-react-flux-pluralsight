@@ -20,11 +20,7 @@ function Select(props) {
           className="form-control"
         >
           <option value="" />
-          {props.items.map(item => (
-            <option key={item.id} value={item.id}>
-              {item.name}
-            </option>
-          ))}
+          {props.options}
         </select>
       </div>
       {props.error && <div className="alert alert-danger">{props.error}</div>}
@@ -39,7 +35,7 @@ Select.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
   error: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.object).isRequired
+  options: PropTypes.array.isRequired
 };
 
 Select.defaultProps = {
