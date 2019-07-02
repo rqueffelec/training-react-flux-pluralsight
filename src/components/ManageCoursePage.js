@@ -5,6 +5,7 @@ import authorStore from "../stores/authorStore";
 import { toast } from "react-toastify";
 import * as courseActions from "../actions/courseActions";
 import * as authorActions from "../actions/authorActions";
+import NotFoundPage from "./NotFoundPage";
 
 const ManageCoursePage = props => {
   const [errors, setErrors] = useState({});
@@ -76,14 +77,20 @@ const ManageCoursePage = props => {
 
   return (
     <>
-      <h2>Manage Course</h2>
-      <CourseForm
-        errors={errors}
-        course={course}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-        authors={authors}
-      />
+      {course ? (
+        <>
+          <h2>Manage Course</h2>
+          <CourseForm
+            errors={errors}
+            course={course}
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            authors={authors}
+          />
+        </>
+      ) : (
+        <NotFoundPage />
+      )}
     </>
   );
 };
