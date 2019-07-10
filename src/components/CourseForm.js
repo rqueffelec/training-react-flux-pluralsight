@@ -15,17 +15,22 @@ function CourseForm(props) {
         error={props.errors.title}
       />
 
+      {/* Cory's challenge: Create a reusable dropdown component
+        Added the Select component to the CourseForm
+      */}
+      {/* Cory's challenge: Populate author dropdown with API data 
+        Added authors as options containing the value and text as key/value pairs
+      */}
       <Select
         id="author"
         name="authorId"
         label="Author"
         onChange={props.onChange}
         value={props.course.authorId ? props.course.authorId.toString() : ""}
-        options={props.authors.map(author => (
-          <option key={author.id} value={author.id}>
-            {author.name}
-          </option>
-        ))}
+        options={props.authors.map(author => ({
+          value: author.id,
+          text: author.name
+        }))}
         error={props.errors.authorId}
       />
 

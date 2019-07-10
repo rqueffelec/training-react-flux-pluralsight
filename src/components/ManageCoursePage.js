@@ -77,6 +77,10 @@ const ManageCoursePage = props => {
 
   return (
     <>
+      {/* Cory's challenge: Show 404 page for bogus slug
+        Checking if the course is undefined and acting upon it
+        Issue with the current implementation: shows an empty form before displaying the NotFoundPage component
+      */}
       {course ? (
         <>
           <h2>Manage Course</h2>

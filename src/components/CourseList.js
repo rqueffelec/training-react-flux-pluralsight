@@ -9,7 +9,10 @@ function CourseList(props) {
         <tr>
           <th>&nbsp;</th>
           <th>Title</th>
-          <th>Author ID</th>
+          {/* Cory's challenge: Display author name on the CoursesPage
+            Updated the table header
+          */}
+          <th>Author</th>
           <th>Category</th>
         </tr>
       </thead>
@@ -30,11 +33,10 @@ function CourseList(props) {
               <td>
                 <Link to={"/course/" + course.slug}>{course.title}</Link>
               </td>
-              <td>
-                {props.authors
-                  .filter(author => author.id === course.authorId)
-                  .map(author => author.name)}
-              </td>
+              {/* Cory's challenge: Display author name on the CoursesPage
+                Displaying the course authorName
+              */}
+              <td>{course.authorName}</td>
               <td>{course.category}</td>
             </tr>
           );
@@ -44,6 +46,8 @@ function CourseList(props) {
   );
 }
 
+// Cory's challenge: Display author name on the CoursesPage
+// Added an optional authorName prop to the course shape
 CourseList.propTypes = {
   deleteCourse: PropTypes.func.isRequired,
   courses: PropTypes.arrayOf(
@@ -51,13 +55,8 @@ CourseList.propTypes = {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       authorId: PropTypes.number.isRequired,
+      authorName: PropTypes.string,
       category: PropTypes.string.isRequired
-    })
-  ).isRequired,
-  authors: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired
     })
   ).isRequired
 };
