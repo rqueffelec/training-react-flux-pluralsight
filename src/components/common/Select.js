@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+// Cory's challenge: Create a reusable dropdown component
+// Created a new Select component
 function Select(props) {
   let wrapperClass = "form-group";
 
@@ -20,7 +22,14 @@ function Select(props) {
           className="form-control"
         >
           <option value="" />
-          {props.options}
+          {/* Cory's challenge: Populate author dropdown with API data 
+            Iterating through the array of options to add them to the select input
+          */}
+          {props.options.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.text}
+            </option>
+          ))}
         </select>
       </div>
       {props.error && <div className="alert alert-danger">{props.error}</div>}
@@ -28,6 +37,8 @@ function Select(props) {
   );
 }
 
+// Cory's challenge: Populate author dropdown with API data
+// Added an options array to the props
 Select.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -35,7 +46,7 @@ Select.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
   error: PropTypes.string,
-  options: PropTypes.array.isRequired
+  options: PropTypes.arrayOf(PropTypes.object)
 };
 
 Select.defaultProps = {
